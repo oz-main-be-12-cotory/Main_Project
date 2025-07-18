@@ -31,6 +31,7 @@ def update_image(id):
     db.session.commit()
     return jsonify({'message': 'Image updated successfully!'})
 
+
 @images_bp.route('/<int:id>', methods=['DELETE'])
 def delete_image(id):
     image = Image.query.get_or_404(id)
