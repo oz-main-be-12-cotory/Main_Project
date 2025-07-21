@@ -41,6 +41,11 @@ def get_sub_images():
     sub_images = Image.query.filter_by(type='sub').all()
     return jsonify([image.to_dict() for image in sub_images])
 
+@images_blp.route('/main', methods=['GET'], strict_slashes=False)
+def get_main_image():
+    main_image = Image.query.filter_by(type='main').first_or_404()
+    return jsonify(main_image.to_dict())
+
 @images_blp.route('/<int:id>', methods=['DELETE'], strict_slashes=False)
 def delete_image(id):
     image = Image.query.get_or_404(id)
