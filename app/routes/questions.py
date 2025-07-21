@@ -44,3 +44,8 @@ def delete_question(id):
     db.session.delete(question)
     db.session.commit()
     return jsonify({'message': 'Question deleted successfully!'})
+
+@questions_blp.route('/count', methods=['GET'], strict_slashes=False)
+def get_question_count():
+    count = Question.query.count()
+    return jsonify({'total': count})
