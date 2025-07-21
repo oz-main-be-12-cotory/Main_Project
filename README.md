@@ -43,4 +43,11 @@
 ## 풀리퀘스트 생성 및 테스트 진행
 ## Develop 브랜치에 변경사항 적용 및 테스트
 
-## Test
+## Develop 1.0.0
+
+## CORS 문제 해결: 프론트엔드와 백엔드 간의 CORS 문제를 해결하기 위해 백엔드(app/__init__.py)의 CORS 설정에 supports_credentials=True 옵션을 추가
+
+## 질문 페이지 문제 진단 및 해결 제안: 질문 페이지에서 질문이 표시되지 않는 문제를 파악.
+
+## 프론트엔드(QuestionPage.jsx)가 질문을 sqe (순서)로 요청하지만, 백엔드(app/routes/questions.py)는 id로 질문을 처리하는 불일치가 원인으로 파악 됨. 
+

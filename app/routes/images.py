@@ -26,7 +26,7 @@ def get_image(id):
     image = Image.query.get_or_404(id)
     return jsonify(image.to_dict())
 
-@images_blp.route('/<int:id>', methods=['PUT'])
+@images_blp.route('/<int:id>', methods=['PUT'], strict_slashes=False)
 def update_image(id):
     image = Image.query.get_or_404(id)
     data = request.get_json()
@@ -36,12 +36,12 @@ def update_image(id):
     return jsonify({'message': 'Image updated successfully!'})
 
 
-@images_blp.route('/sub', methods=['GET'])
+@images_blp.route('/sub', methods=['GET'], strict_slashes=False)
 def get_sub_images():
     sub_images = Image.query.filter_by(type='sub').all()
     return jsonify([image.to_dict() for image in sub_images])
 
-@images_blp.route('/<int:id>', methods=['DELETE'])
+@images_blp.route('/<int:id>', methods=['DELETE'], strict_slashes=False)
 def delete_image(id):
     image = Image.query.get_or_404(id)
     db.session.delete(image)

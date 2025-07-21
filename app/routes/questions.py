@@ -22,12 +22,12 @@ def get_questions():
     questions = Question.query.all()
     return jsonify([question.to_dict() for question in questions])
 
-@questions_blp.route('/<int:id>', methods=['GET'])
+@questions_blp.route('/<int:id>', methods=['GET'], strict_slashes=False)
 def get_question(id):
     question = Question.query.get_or_404(id)
     return jsonify(question.to_dict())
 
-@questions_blp.route('/<int:id>', methods=['PUT'])
+@questions_blp.route('/<int:id>', methods=['PUT'], strict_slashes=False)
 def update_question(id):
     question = Question.query.get_or_404(id)
     data = request.get_json()
@@ -38,7 +38,7 @@ def update_question(id):
     db.session.commit()
     return jsonify({'message': 'Question updated successfully!'})
 
-@questions_blp.route('/<int:id>', methods=['DELETE'])
+@questions_blp.route('/<int:id>', methods=['DELETE'], strict_slashes=False)
 def delete_question(id):
     question = Question.query.get_or_404(id)
     db.session.delete(question)
