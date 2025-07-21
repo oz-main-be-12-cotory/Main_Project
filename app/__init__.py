@@ -31,6 +31,6 @@ def create_app():
 
     @application.route('/')
     def index():
-        return jsonify({"message": "Welcome to the OZ Form API!"})
+        return jsonify({"출력": "API 연동이 완료되었습니다."})
 
     return application
