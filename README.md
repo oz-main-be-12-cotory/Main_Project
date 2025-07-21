@@ -20,3 +20,5 @@
 # 이미지 생성/수정 API (`POST /images`, `PUT /images/<id>`): Image 모델의 url 및 type 필드를 처리하도록 수정. 
 이미지 생성 및 수정 시 type (예: 'main', 'sub') 지정 가능
 # 서브 이미지 조회 API (`GET /images/sub`): type이 sub인 이미지만을 조회하는 새로운 엔드포인트 추가
+
+# Feature: 1.0.3 (4차 수정)
