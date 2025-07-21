@@ -22,12 +22,12 @@ def get_choices():
     choices = Choice.query.all()
     return jsonify([choice.to_dict() for choice in choices])
 
-@choices_blp.route('/<int:id>', methods=['GET'])
+@choices_blp.route('/<int:id>', methods=['GET'], strict_slashes=False)
 def get_choice(id):
     choice = Choice.query.get_or_404(id)
     return jsonify(choice.to_dict())
 
-@choices_blp.route('/<int:id>', methods=['PUT'])
+@choices_blp.route('/<int:id>', methods=['PUT'], strict_slashes=False)
 def update_choice(id):
     choice = Choice.query.get_or_404(id)
     data = request.get_json()
@@ -38,7 +38,7 @@ def update_choice(id):
     db.session.commit()
     return jsonify({'message': 'Choice updated successfully!'})
 
-@choices_blp.route('/<int:id>', methods=['DELETE'])
+@choices_blp.route('/<int:id>', methods=['DELETE'], strict_slashes=False)
 def delete_choice(id):
     choice = Choice.query.get_or_404(id)
     db.session.delete(choice)
