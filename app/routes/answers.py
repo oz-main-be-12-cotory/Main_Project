@@ -36,7 +36,6 @@ def update_answer(id):
     answer = Answer.query.get_or_404(id)
     data = request.get_json()
     answer.user_id = data['user_id']
-    answer.question_id = data['question_id']
     answer.choice_id = data['choice_id']
     db.session.commit()
     return jsonify({'message': 'Answer updated successfully!'})
