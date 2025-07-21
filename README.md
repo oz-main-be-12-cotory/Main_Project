@@ -20,6 +20,7 @@
 
 ## requirements.txt (새로 설치된 패키지 반영)
 
+<br>
 
 ## Feature: 1.0.1 (2차 수정)
 
@@ -29,6 +30,7 @@
 
 ### flask db migrate 및 flask db upgrade 명령 실행하여 ERD에 정의된 테이블 구조를 MySQL 데이터베이스에 반영
 
+<br>
 
 ## Feature: 1.0.2 (3차 수정)
 
@@ -37,5 +39,6 @@
 
 ### 서브 이미지 조회 API (`GET /images/sub`): type이 sub인 이미지만을 조회하는 새로운 엔드포인트 추가
 
+<br>
 
 ## Feature: 1.0.3 (4차 수정)
