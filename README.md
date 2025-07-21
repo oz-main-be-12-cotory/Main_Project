@@ -12,7 +12,6 @@
 # requirements.txt (새로 설치된 패키지 반영)
 
 
-# README.md
 # Feature: 1.0.1 (2차 수정)
 
 # 데이터베이스 마이그레이션 성공:
