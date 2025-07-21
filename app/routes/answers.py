@@ -7,7 +7,16 @@ answers_bp = Blueprint('answers', __name__)
 @answers_bp.route('/', methods=['POST'])
 def create_answer():
     data = request.get_json()
-    new_answer = Answer(user_id=data['user_id'], question_id=data['question_id'], choice_id=data['choice_id'])
+    required_fields = ['user_id', 'question_id', 'choice_id']
+    for field in required_fields:
+        if field not in data:
+            return jsonify({'message': f'Missing required field: {field}'}), 400
+
+    new_answer = Answer(
+        user_id=data['user_id'],
+        question_id=data['question_id'],
+        choice_id=data['choice_id']
+    )
     db.session.add(new_answer)
     db.session.commit()
     return jsonify({'message': 'Answer created successfully!'}), 201
