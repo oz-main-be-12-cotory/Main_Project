@@ -51,3 +51,16 @@
 
 ## 프론트엔드(QuestionPage.jsx)가 질문을 sqe (순서)로 요청하지만, 백엔드(app/routes/questions.py)는 id로 질문을 처리하는 불일치가 원인으로 파악 됨. 
 
+## Develop 1.0.1
+
+## 질문 페이지 문항 누락 문제 해결: 프론트엔드(QuestionPage.jsx)가 질문을 sqe (순서)로 요청하는 것에 맞춰 백엔드(app/routes/questions.py)에 sqe 기반으로 질문을 가져오는 새 라우트 (/questions/by_sqe/<int:sqe>)를 추가
+
+## 메인 이미지 로드 문제 해결:
+
+## 백엔드(app/routes/images.py)에 type='main' 이미지를 가져오는 /images/main 엔드포인트를 추가
+
+## 데이터베이스에 type='main'인 이미지가 없어서 발생한 문제를 해결하기 위해 해당 이미지를 추가하고 URL을 업데이트
+
+## 프론트엔드(SurveyPage.jsx)에서 이미지 URL을 data.image 대신 data.url로 올바르게 참조하도록 수정
+
+## `EISDIR` 오류 해결: node_modules 및 package-lock.json을 삭제하고 의존성을 재설치하여 Vite 개발 서버의 파일 처리 오류를 해결
