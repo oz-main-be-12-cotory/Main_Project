@@ -15,3 +15,8 @@
 # 데이터베이스 마이그레이션 성공:
 # config.py의 데이터베이스 연결 정보(DB 이름, 사용자/비밀번호) 문제 해결
 # flask db migrate 및 flask db upgrade 명령 실행하여 ERD에 정의된 테이블 구조를 MySQL 데이터베이스에 반영
+
+# Feature: 1.0.2 (3차 수정)
+# 이미지 생성/수정 API (`POST /images`, `PUT /images/<id>`): Image 모델의 url 및 type 필드를 처리하도록 수정. 
+이미지 생성 및 수정 시 type (예: 'main', 'sub') 지정 가능
+# 서브 이미지 조회 API (`GET /images/sub`): type이 sub인 이미지만을 조회하는 새로운 엔드포인트 추가
