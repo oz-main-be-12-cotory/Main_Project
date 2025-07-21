@@ -16,5 +16,5 @@
 # Feature: 1.0.1 (2차 수정)
 
 # 데이터베이스 마이그레이션 성공:
-# config.py의 데이터베이스 연결 정보(DB 이름, 사용자/비밀번호) 문제를 해결했습니다.
-# flask db migrate 및 flask db upgrade 명령을 성공적으로 실행하여 ERD에 정의된 테이블 구조를 MySQL 데이터베이스에 반영했습니다.
+# config.py의 데이터베이스 연결 정보(DB 이름, 사용자/비밀번호) 문제 해결
+# flask db migrate 및 flask db upgrade 명령을 실행하여 ERD에 정의된 테이블 구조를 MySQL 데이터베이스에 반영
