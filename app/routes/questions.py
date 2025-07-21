@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from app import db
+from config import db
 from app.models import Question
 
 questions_bp = Blueprint('questions', __name__)

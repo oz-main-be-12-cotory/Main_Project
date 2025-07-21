@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from app import db
+from config import db
 from app.models import Choice
 
 choices_bp = Blueprint('choices', __name__)
