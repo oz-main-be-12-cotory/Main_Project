@@ -64,3 +64,13 @@
 ## 프론트엔드(SurveyPage.jsx)에서 이미지 URL을 data.image 대신 data.url로 올바르게 참조하도록 수정
 
 ## `EISDIR` 오류 해결: node_modules 및 package-lock.json을 삭제하고 의존성을 재설치하여 Vite 개발 서버의 파일 처리 오류를 해결
+
+## Develop 1.0.2
+
+## 질문 개수 API 추가: 프론트엔드에서 전체 질문 개수를 가져올 수 있도록 백엔드(app/routes/questions.py)에 /questions/count 엔드포인트를 추가
+
+## 질문 모델에 선택지 포함: 질문 조회 시 선택지 정보가 함께 반환되도록 백엔드 Question 모델(app/models.py)의 to_dict() 메서드를 수정
+
+## 질문 선택지 데이터 추가: 각 질문에 대한 답변 선택지 데이터를 백엔드 API를 통해 데이터베이스에 추가
+
+## 답변 제출 API 추가 및 연동: 답변 제출을 처리하는 백엔드 API(app/routes/answers.py의 /answers/submit 엔드포인트)를 추가하고, 프론트엔드(QuestionPage.jsx)에서 해당 엔드포인트로 답변을 제출하도록 연동

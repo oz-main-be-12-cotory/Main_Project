@@ -46,3 +46,25 @@ def delete_answer(id):
     db.session.delete(answer)
     db.session.commit()
     return jsonify({'message': 'Answer deleted successfully!'})
+
+@answers_blp.route('/submit', methods=['POST'], strict_slashes=False)
+def submit_answers():
+    data = request.get_json()
+    if not data:
+        return jsonify({'message': 'No data provided'}), 400
+
+    try:
+        for answer_data in data:
+            new_answer = Answer(
+                user_id=answer_data['user_id'],
+                choice_id=answer_data['choice_id']
+            )
+            db.session.add(new_answer)
+        db.session.commit()
+        return jsonify({'message': 'Answers submitted successfully!'}), 201
+    except KeyError as e:
+        db.session.rollback()
+        return jsonify({'message': f'Missing key in answer data: {e}'}), 400
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'message': f'An error occurred: {str(e)}'}), 500
