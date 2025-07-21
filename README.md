@@ -11,8 +11,8 @@
 # config.py (SQLALCHEMY_DATABASE_URI 플레이스홀더로 수정)
 # requirements.txt (새로 설치된 패키지 반영)
 
-<div>>
-<div>>
+</div>
+</div>
 </div>
   
 # Feature: 1.0.1 (2차 수정)
