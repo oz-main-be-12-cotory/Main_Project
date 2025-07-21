@@ -17,8 +17,6 @@ def create_app():
 
     migrate.init_app(application, db)
 
-    from app.routes import register_routes
-
     # 400 에러 발생 시, JSON 형태로 응답 반환
     @application.errorhandler(400)
     def handle_bad_request(error):
