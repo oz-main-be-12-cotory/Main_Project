@@ -10,11 +10,12 @@
 # app/routes/users.py (db import 경로 수정)
 # config.py (SQLALCHEMY_DATABASE_URI 플레이스홀더로 수정)
 # requirements.txt (새로 설치된 패키지 반영)
+
 <div>>
 <div>>
 </div>
+  
 # Feature: 1.0.1 (2차 수정)
-
 # 데이터베이스 마이그레이션 성공:
 # config.py의 데이터베이스 연결 정보(DB 이름, 사용자/비밀번호) 문제 해결
 # flask db migrate 및 flask db upgrade 명령을 실행하여 ERD에 정의된 테이블 구조를 MySQL 데이터베이스에 반영
