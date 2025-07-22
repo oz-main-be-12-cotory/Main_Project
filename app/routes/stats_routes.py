@@ -12,6 +12,7 @@ def user_answer_rate():
         result = db.session.query(
             Question.id.label('question_id'),
             Choice.id.label('choice_id'),
+            Choice.content.label('choice_content'),
             func.count(Answer.id).label('answer_count'),
             (func.count(Answer.id) * 100 / func.sum(func.count(Answer.id)).over()).label('percentage')
         ).join(Choice, Choice.id == Answer.choice_id)          .join(Question, Question.id == Choice.question_id)          .group_by(Question.id, Choice.id)          .order_by(Question.id, Choice.id)          .all()
@@ -20,6 +21,7 @@ def user_answer_rate():
             {
                 "question_id": row.question_id,
                 "choice_id": row.choice_id,
+                "choice_content": row.choice_content,
                 "answer_count": row.answer_count,
                 "percentage": round(row.percentage, 2)  # 소수점 2자리 반올림
             }
@@ -38,6 +40,7 @@ def question_answer_distribution():
         result = db.session.query(
             Question.id.label('question_id'),
             Choice.id.label('choice_id'),
+            Choice.content.label('choice_content'),
             func.count(Answer.id).label('answer_count'),
             (func.count(Answer.id) * 100 / func.sum(func.count(Answer.id)).over(partition_by=Question.id)).label('percentage')
         ).join(Choice, Choice.id == Answer.choice_id)          .join(Question, Question.id == Choice.question_id)          .group_by(Question.id, Choice.id)          .order_by(Question.id, Choice.id)          .all()
@@ -46,6 +49,7 @@ def question_answer_distribution():
             {
                 "question_id": row.question_id,
                 "choice_id": row.choice_id,
+                "choice_content": row.choice_content,
                 "answer_count": row.answer_count,
                 "percentage": round(row.percentage, 2)  # 소수점 2자리 반올림
             }

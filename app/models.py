@@ -57,6 +57,7 @@ class Question(db.Model):
         return {
             'id': self.id,
             'image_id': self.image_id,
+            'image': self.image.url if self.image else None,
             'title': self.title,
             'sqe': self.sqe,
             'is_active': self.is_active,
@@ -130,12 +131,16 @@ class Answer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'),
                          nullable=False)
+    question_id = db.Column(db.Integer, db.ForeignKey('questions.id'),
+                             nullable=False)
     choice_id = db.Column(db.Integer, db.ForeignKey('choices.id'), nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(),
                             onupdate=db.func.now())
 
     user = db.relationship('User', backref=db.backref('answers', lazy=True))
+    question = db.relationship('Question',
+                               backref=db.backref('answers', lazy=True))
     choice = db.relationship('Choice',
                               backref=db.backref('answers', lazy=True))
 
@@ -146,6 +151,7 @@ class Answer(db.Model):
         return {
             'id': self.id,
             'user_id': self.user_id,
+            'question_id': self.question_id,
             'choice_id': self.choice_id,
             'created_at': (self.created_at.isoformat()
                            if self.created_at else None),

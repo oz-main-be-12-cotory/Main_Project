@@ -57,6 +57,7 @@ def submit_answers():
         for answer_data in data:
             new_answer = Answer(
                 user_id=answer_data['user_id'],
+                question_id=answer_data['question_id'],
                 choice_id=answer_data['choice_id']
             )
             db.session.add(new_answer)

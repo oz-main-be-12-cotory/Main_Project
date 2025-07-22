@@ -1,4 +1,6 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, Response
+import boto3
+from urllib.parse import urlparse
 from config import db
 from app.models import Image
 
@@ -40,6 +42,30 @@ def update_image(id):
 def get_sub_images():
     sub_images = Image.query.filter_by(type='sub').all()
     return jsonify([image.to_dict() for image in sub_images])
+
+@images_blp.route('/proxy')
+def image_proxy():
+    s3_url = request.args.get('url')
+    if not s3_url:
+        return "URL parameter is required", 400
+
+    try:
+        # Parse the S3 URL to get bucket name and key
+        parsed_url = urlparse(s3_url)
+        bucket_name = parsed_url.netloc.split('.')[0]
+        key = parsed_url.path.lstrip('/')
+
+        # Use boto3 to get the object from S3
+        s3 = boto3.client('s3')
+        s3_object = s3.get_object(Bucket=bucket_name, Key=key)
+        image_data = s3_object['Body'].read()
+        content_type = s3_object['ContentType']
+
+        return Response(image_data, content_type=content_type)
+
+    except Exception as e:
+        return str(e), 500
+
 
 @images_blp.route('/main', methods=['GET'], strict_slashes=False)
 def get_main_image():

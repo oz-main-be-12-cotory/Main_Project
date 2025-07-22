@@ -22,9 +22,9 @@ def get_questions():
     questions = Question.query.all()
     return jsonify([question.to_dict() for question in questions])
 
-@questions_blp.route('/<int:id>', methods=['GET'], strict_slashes=False)
-def get_question(id):
-    question = Question.query.get_or_404(id)
+@questions_blp.route('/<int:sqe>', methods=['GET'], strict_slashes=False)
+def get_question(sqe):
+    question = Question.query.filter_by(sqe=sqe).first_or_404()
     return jsonify(question.to_dict())
 
 @questions_blp.route('/<int:id>', methods=['PUT'], strict_slashes=False)
